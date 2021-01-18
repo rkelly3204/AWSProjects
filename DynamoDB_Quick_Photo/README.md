@@ -9,6 +9,8 @@ Application will have the following entities:
     - Friendship
     
  A "User" can have many "Photos", and a "Photo" can have many "Reactions". Fianlly, the "Friendship" entity represents a many-to many relationship between "Users", as a "User"can follow multiple "Users" and be followed by multiple other "Users"
+ 
+ ![alt text](https://d1.awsstatic.com/Projects/Module_2_Step_1.435e9196c954a037b9aaa5040e6ea5cba2656b47.png)
     
    ## Access Paterns:
    ### USER Access Patterns:
