@@ -1,4 +1,5 @@
 # Methodology: Design and Implementation for a Mobil App
+[AWS Tutorial](https://aws.amazon.com/getting-started/hands-on/design-a-database-for-a-mobile-app-with-dynamodb/4/)
 
 ## Data Model:
 Application will have the following entities:
