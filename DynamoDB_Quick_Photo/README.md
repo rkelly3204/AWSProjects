@@ -45,3 +45,12 @@ Application will have the following entities:
    - View followers for user (Read)
    - View followed for user (Read)
      
+   ## Primary Key - Design
+   Each user on your application will have a single user profile represented by "User" entity in your table.
+   A "User" will have multiple photos represented in your application, and a photo will have multiple reactions. These are both one-to-many relationships.
+   
+   "Friendship" entity is a represenation of a many-to-many relationship as one user may follow multiple other users, and a user may have multiple followers.
+   
+   Having a many-to-many mapping is usually an indication that you will want to satisfy two query patterns, and our application is no exception.
+   
+   We will use a composite primary key with both a "HASH" and "RANGE" value. Because it's a one-to-one mapping, the acces pattern will be basic key-value lookup. Since your table design requires a "RANGE" property, you can provide a filler value for "RANGE" key.
