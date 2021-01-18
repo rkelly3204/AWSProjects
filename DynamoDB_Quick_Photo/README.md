@@ -10,8 +10,8 @@ Data Model:
     A "User" can have many "Photos", and a "Photo" can have many "Reactions". Fianlly, the "Friendship" entity represents a many-to many relationship between "Users", as a "User"     can follow multiple "Users" and be followed by multiple other "Users"
     
    Access Paterns:
-     USER Access Patterns: 
-     The users of our mobile application will need to create user profiles. These profiles will include information such as a username, profile, picture, location, current status,      and interest for a given user.
+     USER Access Patterns:
+     The users of our mobile application will need to create user profiles. These profiles will include information such as a username, profile, picture, location, current status, and interest for a given user.
      
      Users will be able to browse the profile of other users. A user may want to browse the profile of another user to see if the user is interesting to follow or simply to read 
      background on an exisitng friend.
