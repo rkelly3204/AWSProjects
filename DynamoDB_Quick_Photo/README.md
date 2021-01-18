@@ -6,7 +6,7 @@ Application will have the following entities:
     - Photo
     - Reaction
     - Friendship
-    A "User" can have many "Photos", and a "Photo" can have many "Reactions". Fianlly, the "Friendship" entity represents a many-to many relationship between "Users", as a "User"     can follow multiple "Users" and be followed by multiple other "Users"
+    A "User" can have many "Photos", and a "Photo" can have many "Reactions". Fianlly, the "Friendship" entity represents a many-to many relationship between "Users", as a "User"can follow multiple "Users" and be followed by multiple other "Users"
     
    ### Access Paterns:
      USER Access Patterns:
