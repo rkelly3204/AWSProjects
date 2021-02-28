@@ -35,6 +35,7 @@ class ZillowScraper():
     }
 
     def fetch(self, url):
+        print(url)
         response = requests.get(url, headers=self.headers)
         print(response.status_code)
         return response
@@ -52,22 +53,24 @@ class ZillowScraper():
         content = bs4(response, 'lxml')
         Address = content.find('div',{'class':'Text-c11n-8-18-0__aiai24-0 hweBDL ds-price-change-address-row'})
         self.data['Address'].append(Address.text)
-        Price = content.find('span',{'class':'Text-c11n-8-18-0__aiai24-0 sc-pYA-dN lcoQFe'})
-        self.data['Price'].append(Price.text)
+        Price = content.find('span',{'class':'Text-c11n-8-18-0__aiai24-0 sc-oUcyK cTBvcC'})
+        Price = ZillowScraper.checkVal(self,Price)
+        self.data['Price'].append(Price)
 
         Top = content.find_all('span',{'class':'ds-bed-bath-living-area'})
         self.data['BedRoom'].append(Top[0].get_text())
         self.data['BathRoom'].append(Top[1].get_text())
         self.data['SquareFt'].append(Top[2].get_text())
 
-        Facts = content.find_all('span',{'class':'Text-c11n-8-18-0__aiai24-0 sc-pczax cYlXJg'})
+        Facts = content.find_all('span',{'class':'Text-c11n-8-18-0__aiai24-0 sc-pktCe fKxGLN'})
         self.data['HouseType'].append(Facts[0].get_text())
         self.data['YearBuilt'].append(Facts[1].get_text())
         self.data['Heating'].append(Facts[2].get_text())
         self.data['Cooling'].append(Facts[3].get_text())
         self.data['Parking'].append(Facts[4].get_text())
 
-        price2 = Decimal(sub(r'[^\d]', '', Price.text))
+
+        price2 = Decimal(sub(r'[^\d]', '', Price))
         squareFt = Decimal(sub(r'[^\d]', '', Top[2].get_text()))
         priceSqft = round(price2 / squareFt)
         self.data['PriceSqft'] = priceSqft
@@ -78,6 +81,14 @@ class ZillowScraper():
             response = self.fetch(i)
             self.parse2(response.text)
             time.sleep(10)
+
+    def checkVal(self,value):
+        if value == None:
+            value = 'na'
+        else:
+            value = value.text
+
+        return value
 
     def to_csv(self):
         output_df = pd.DataFrame.from_dict(self.data)
