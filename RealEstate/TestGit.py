@@ -1,1 +1,1 @@
-Print("This is a test for Git")
+print("This is a test for Git")
