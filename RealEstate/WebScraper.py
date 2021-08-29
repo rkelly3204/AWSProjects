@@ -48,7 +48,7 @@ class ZillowScraper():
             if script:
                 script_json = json.loads(script.contents[0])
                 self.results.append(script_json['url'])
-
+    
     def parse2(self,response):
         content = bs4(response, 'lxml')
         Address = content.find('div',{'class':'Text-c11n-8-18-0__aiai24-0 hweBDL ds-price-change-address-row'})
